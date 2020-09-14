@@ -1,7 +1,7 @@
 import BaseModel from './BaseModel';
 import { Model } from 'objection';
 import List from './List';
-
+import User from './User';
 export default class Project extends BaseModel {
   static get tableName() {
     return 'project';
