@@ -31,27 +31,4 @@ export const updateProject= async (id, fieldsForEdit) =>{
   return updatedProject;
 }
 
-export const deleteList = async id => {
-  const numDeleted = 0;
-  numDeleted+= await Task.query().delete().where('listId', id);
-  numDeleted+= await List.query.deleteById(id);
-  return numDeleted;
-};
 
-export const addList = async (projectId,name) => {
-  const addedList = await List.query().insert({
-    'projectId' : projectId,
-    'name': name,
-  })
-  return addedList;
-};
-
-export const editExpense = async (id, fieldsForEdit) => {
-  const updatedExpense = await Expense.query().patchAndFetchById(id, {
-    name: fieldsForEdit.name,
-    amount: fieldsForEdit.amount,
-    category_id: fieldsForEdit.category_id,
-    description: fieldsForEdit.description,
-  });
-  return updatedExpense;
-};

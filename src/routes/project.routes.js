@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { authenticate } from '../middlewares/authenticate';
-import { addProjectController, deleteProjectController, editProjectController, } from '../controllers/tasks';
+import { addProjectController, deleteProjectController, editProjectController, } from '../controllers/projects';
 
 const router = Router();
 router.use(authenticate);

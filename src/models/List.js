@@ -12,7 +12,7 @@ export default class List extends BaseModel {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['projectId, name'],
+      required: ['projectId', 'name'],
       properties: {
         projectId: { type: 'integer' },
         name: { type: 'string', minLength: 1, maxLength: 50 },

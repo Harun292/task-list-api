@@ -2,7 +2,7 @@ import {
   updateProject,
   deleteProject,
   addProject,
-} from '../services/db/tasks';
+} from '../services/db/projects';
 import { HttpError } from '../utils/httpError';
 
 
