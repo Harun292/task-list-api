@@ -11,7 +11,6 @@ export const deleteList = async (id) => {
 };
 
 export const addList = async (projectId,name) => {
-    console.log(projectId,name);
   const addedList= await List.query().insert({
     projectId,
     name,

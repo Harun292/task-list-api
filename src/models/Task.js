@@ -1,6 +1,6 @@
 import BaseModel from './BaseModel';
 import { Model } from 'objection';
-import List from './List';
+import Project from './Project';
 export default class Task extends BaseModel {
   static get tableName() {
     return 'task';

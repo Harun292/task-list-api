@@ -3,7 +3,7 @@ import userRoutes from './user.routes';
 import loginRoutes from './login.routes';
 import projectRoutes from './project.routes';
 import listRoutes from './list.routes';
-
+import taskRoutes from './task.routes';
 const router = Router();
 
 // Test
@@ -20,6 +20,8 @@ router.use('/login', loginRoutes);
 router.use('/project', projectRoutes);
 // List routes
 router.use('/list', listRoutes);
+// Task routes
+router.use('/task', taskRoutes);
 
 
 //api v1 main router
