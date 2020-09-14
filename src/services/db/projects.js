@@ -4,11 +4,9 @@ import Task from '../../models/Task';
 
 
 export const deleteProject = async (id) => {
-  let numDeleted=0;
-  const listId=List.query().select('id').where('list.projectId',id);
-   numDeleted+= await Task.query().delete().where('task.listId', listId);
-   numDeleted+= await List.query().deleteById(listId);
-   numDeleted+= await Project.query().deleteById(id);
+  await Task.query().delete().whereIn('task.listId',List.query().select('list.id').where('list.projectId',id));  
+  await List.query().delete().where('list.projectId',id);
+  const numDeleted= await Project.query().deleteById(id);
   return numDeleted;
 };
 
