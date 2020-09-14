@@ -22,7 +22,7 @@ export default class Project extends BaseModel {
   }
   static get relationMappings() {
     return {
-      project: {
+      user: {
         relation: Model.BelongsToOneRelation,
         modelClass: User,
         join: {

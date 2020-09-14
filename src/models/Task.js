@@ -1,6 +1,6 @@
 import BaseModel from './BaseModel';
 import { Model } from 'objection';
-import Project from './Project';
+import List from './List';
 export default class Task extends BaseModel {
   static get tableName() {
     return 'task';
@@ -23,12 +23,12 @@ export default class Task extends BaseModel {
 
   static get relationMappings() {
     return {
-      project: {
+      tasks: {
         relation: Model.BelongsToOneRelation,
-        modelClass: Project,
+        modelClass: List,
         join: {
-          from: 'task.projectId',
-          to: 'project.id',
+          from: 'task.listId',
+          to: 'list.id',
         },
       },
     };

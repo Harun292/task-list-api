@@ -1,5 +1,6 @@
 import List from '../../models/List';
 import Task from '../../models/Task';
+import Project from '../../models/Project';
 
 
 export const deleteTask = async (id) => {
@@ -30,5 +31,10 @@ export const updateTask= async (id, fieldsForEdit) =>{
   });
 
   return updatedTask;
+}
+
+export const getTasks = async (id)=>{
+  const allTasks=Project.query().withGraphFetched('[list,list.[tasks]]').where('project.userId',id);
+  return allTasks;
 }
 

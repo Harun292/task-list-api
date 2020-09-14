@@ -2,6 +2,7 @@ import {
     updateTask,
     deleteTask,
     addTask,
+    getTasks,
   } from '../services/db/tasks';
   import { HttpError } from '../utils/httpError';
   
@@ -51,4 +52,13 @@ import {
       next(error);
     }
   };
+
+export const getAllTasksController = async (req,res,next)=>{
+  try {
+    const allTasks= await getTasks(req.id);
+    res.status(200).send({tasks: allTasks});
+  } catch (error) {
+    next(error);
+  }
+}
   
