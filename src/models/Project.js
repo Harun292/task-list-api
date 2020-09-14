@@ -1,10 +1,10 @@
 import BaseModel from './BaseModel';
 import { Model } from 'objection';
-import Expense from './Expense';
+import List from './List';
 
-export default class Category extends BaseModel {
+export default class Project extends BaseModel {
   static get tableName() {
-    return 'categories';
+    return 'project';
   }
   static get idColumn() {
     return 'id';
@@ -12,21 +12,30 @@ export default class Category extends BaseModel {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['name'],
+      required: ['name','colorName'],
       properties: {
         id: { type: 'integer' },
         name: { type: 'string', minLength: 1, maxLength: 20 },
+        colorName: {type:'string', minLength: 1, maxLength: 20}
       },
     };
   }
   static get relationMappings() {
     return {
-      expenses: {
-        relation: Model.HasManyRelation,
-        modelClass: Expense,
+      project: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: User,
         join: {
-          from: 'categories.id',
-          to: 'expenses.category_id',
+          from: 'project.userId',
+          to: 'users.id',
+        },
+      },
+      list: {
+        relation: Model.HasManyRelation,
+        modelClass: List,
+        join: {
+          from: 'project.id',
+          to: 'list.projectId',
         },
       },
     };

@@ -1,5 +1,5 @@
 import BaseModel from './BaseModel';
-import Expense from './Expense';
+import Project from './Project';
 
 export default class User extends BaseModel {
   static get tableName() {
@@ -25,7 +25,7 @@ export default class User extends BaseModel {
     return {
       expenses: {
         relation: BaseModel.HasManyRelation,
-        modelClass: Expense,
+        modelClass: Project,
         join: {
           from: 'users.id',
           to: 'expenses.user_id',
