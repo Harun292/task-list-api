@@ -1,5 +1,4 @@
 import User from '../../models/User';
-
 export const dbGetAllUsers = async () => {
   return User.query();
 };
@@ -10,6 +9,7 @@ export const createUser = async user => {
     firstName: user.firstName,
     lastName: user.lastName,
   });
+
   return newUser;
 };
 export const getUserByEmail = async email => {
