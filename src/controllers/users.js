@@ -23,6 +23,10 @@ export const createUserController = async (req, res, next) => {
 
 export const updateUserController = async (req, res, next) =>{
 try {
+  if(req.body.user.password!==null){
+    const hashedPassword = await generateHashPassword(req.body.user.password);
+    req.body.user.password=hashedPassword;
+  }
   const updatedUser=await updateUser(req.id,req.body.user);
   res.status(201).send(updatedUser);
 } catch (error) {
